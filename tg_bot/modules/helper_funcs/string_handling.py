@@ -236,18 +236,18 @@ def escape_chars(text: str, to_escape: List[str]) -> str:
 
 
 def extract_time(message, time_val):
-    if any(time_val.endswith(unit) for unit in ('دقیقه', 'ساعت', 'روز')):
+    if any(time_val.endswith(unit) for unit in ('m', 'h', 'd')):
         unit = time_val[-1]
         time_num = time_val[:-1]  # type: str
         if not time_num.isdigit():
             message.reply_text("زمان وارد شده اشتباه.")
             return ""
 
-        if unit == 'دقیقه':
+        if unit == 'm':
             bantime = int(time.time() + int(time_num) * 60)
-        elif unit == 'ساعت':
+        elif unit == 'h':
             bantime = int(time.time() + int(time_num) * 60 * 60)
-        elif unit == 'روز':
+        elif unit == 'd':
             bantime = int(time.time() + int(time_num) * 24 * 60 * 60)
         else:
             # how even...?

@@ -419,7 +419,7 @@ WELC_HELP_TXT = "پیام خوش آمد و خدافظی گپ شما میتونه
                 "و آیدی که بهتون میدم رو جایگزین کنید و کلید قوانین هم براتون تو پیام خوش آمد نشون میدم" \
                 ".\n" \
                 "اگه خوشتون میاد حتی میتونیدانواع مدیا ، ویس ، گیف و... برای اعضای جدید بفرستید " \
-                "replying to the desired media, and calling /setwelcome.".format(dispatcher.bot.username)
+                "روی فایلتون ریپلی بزنید و دستور !خوشامد رو بنویسید.".format(dispatcher.bot.username)
 
 
 @run_async

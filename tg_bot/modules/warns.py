@@ -33,7 +33,7 @@ def warn(user: User, chat: Chat, reason: str, message: Message, warner: User = N
     if warner:
         warner_tag = mention_html(warner.id, warner.first_name)
     else:
-        warner_tag = "Automated warn filter."
+        warner_tag = "خودم."
 
     limit, soft_warn = sql.get_warn_setting(chat.id)
     num_warns, reasons = sql.warn_user(user.id, chat.id, reason)

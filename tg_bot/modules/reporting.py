@@ -37,7 +37,7 @@ def report_setting(bot: Bot, update: Update, args: List[str]):
         if len(args) >= 1:
             if args[0] in ("روشن", "فعال"):
                 sql.set_chat_setting(chat.id, True)
-                msg.reply_text("خبرچین این گپ فعال شد . اگه کسی از دستورات *ریپورت* و *!ریپورت <دلیل>* روی کسی "
+                msg.reply_text("خبرچین گپ فعال شد ، اگه کسی از دستور ریپورت یا !ریپورت<دلیل> روی کسی"
                                "ریپلی کنه من سریعا به ادمینها اطلاع میدم.")
 
             elif args[0] in ("غیرفعال", "خاموش"):

@@ -101,7 +101,7 @@ __help__ = """
  -!بیقانون : قوانین گپ رو پاک میکنم
 """
 
-__mod_name__ = "قانونمند"
+__mod_name__ = "rules"
 
 GET_RULES_HANDLER = CommandHandler("قوانین", get_rules, filters=Filters.group)
 SET_RULES_HANDLER = CommandHandler("باقانون", set_rules, filters=Filters.group)

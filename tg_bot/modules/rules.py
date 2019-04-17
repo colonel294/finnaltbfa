@@ -26,29 +26,29 @@ def send_rules(update, chat_id, from_pm=False):
         chat = bot.get_chat(chat_id)
     except BadRequest as excp:
         if excp.message == "Chat not found" and from_pm:
-            bot.send_message(user.id, "اومم ادمین این گپه هنوز قوانین خاصی انتخاب نکرده . به ادمین بگو تا "
-                                      "درستش کنه.")
+            bot.send_message(user.id, "لینک قوانین من هنوز به خوبی تنظیم نشده  "
+                                      "به ادمین بگو تا رفعش کنه!")
             return
         else:
             raise
 
     rules = sql.get_rules(chat_id)
-    text = "قوانین گپ *{}* عباتند از:\n\n{}".format(escape_markdown(chat.title), rules)
+    text = "The rules for *{}* are:\n\n{}".format(escape_markdown(chat.title), rules)
 
     if from_pm and rules:
         bot.send_message(user.id, text, parse_mode=ParseMode.MARKDOWN)
     elif from_pm:
-        bot.send_message(user.id, " اومم ادمین این گپه هنوز قوانین خاصی انتخاب نکرده . به ادمین بگو تا"
-                                  "درستش کنه.")
+        bot.send_message(user.id, "این گپ هنوز قوانین خاصی تعیین نکرده. "
+                                  "ولی به این معنی هم نیست که بی قانونه ...!")
     elif rules:
-        update.effective_message.reply_text("بیا p.v عزیزم تا قوانینو بهت بدم",
+        update.effective_message.reply_text("بیا p.v عزیزم تا قوانینو بهت بدم.",
                                             reply_markup=InlineKeyboardMarkup(
-                                                [[InlineKeyboardButton(text="قوانین",
+                                                [[InlineKeyboardButton(text="Rules",
                                                                        url="t.me/{}?start={}".format(bot.username,
                                                                                                      chat_id))]]))
     else:
-        update.effective_message.reply_text("اومم ادمین این گپه هنوز قوانین خاصی انتخاب نکرده . به ادمین بگو تا "
-                                            "درستش کنه.")
+        update.effective_message.reply_text("این گپ هنوز قوانین خاصی تعیین نکرده. "
+                                            "ولی به این معنی هم نیست که بی قانونه ...!")
 
 
 @run_async
@@ -64,7 +64,7 @@ def set_rules(bot: Bot, update: Update):
         markdown_rules = markdown_parser(txt, entities=msg.parse_entities(), offset=offset)
 
         sql.set_rules(chat_id, markdown_rules)
-        update.effective_message.reply_text("حله فرمانده !")
+        update.effective_message.reply_text("حله فرمانده !.")
 
 
 @run_async
@@ -76,7 +76,7 @@ def clear_rules(bot: Bot, update: Update):
 
 
 def __stats__():
-    return "{} گپ قوانینشون رو تنظیم کردن.".format(sql.num_chats())
+    return "{} chats have rules set.".format(sql.num_chats())
 
 
 def __import_data__(chat_id, data):
@@ -90,7 +90,7 @@ def __migrate__(old_chat_id, new_chat_id):
 
 
 def __chat_settings__(chat_id, user_id):
-    return "این گپ قوانینش تنظیم شده به: `{}`".format(bool(sql.get_rules(chat_id)))
+    return "This chat has had it's rules set: `{}`".format(bool(sql.get_rules(chat_id)))
 
 
 __help__ = """
@@ -101,7 +101,7 @@ __help__ = """
  -!بیقانون : قوانین گپ رو پاک میکنم
 """
 
-__mod_name__ = "قوانین"
+__mod_name__ = "Rules"
 
 GET_RULES_HANDLER = CommandHandler("قوانین", get_rules, filters=Filters.group)
 SET_RULES_HANDLER = CommandHandler("باقانون", set_rules, filters=Filters.group)

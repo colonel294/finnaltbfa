@@ -33,7 +33,7 @@ def send_rules(update, chat_id, from_pm=False):
             raise
 
     rules = sql.get_rules(chat_id)
-    text = "The Rules for *{}* are:\n\n{}".format(escape_markdown(chat.title), rules)
+    text = "The rules for *{}* are:\n\n{}".format(escape_markdown(chat.title), rules)
 
     if from_pm and rules:
         bot.send_message(user.id, text, parse_mode=ParseMode.MARKDOWN)
@@ -90,7 +90,7 @@ def __migrate__(old_chat_id, new_chat_id):
 
 
 def __chat_settings__(chat_id, user_id):
-    return "This chat has had it's rules set: `{}`".format(bool(sql.get_rules(chat_id)))
+    return "این گپ قوانین رو تنظیم کرده به: `{}`".format(bool(sql.get_rules(chat_id)))
 
 
 __help__ = """

@@ -36,7 +36,7 @@ LOCK_TYPES = {'استیکر': Filters.sticker,
 GIF = Filters.animation
 OTHER = Filters.game | Filters.sticker | GIF 
 MEDIA = Filters.audio | Filters.document | Filters.video | Filters.video_note | Filters.voice | Filters.photo
-MESSAGES = Filters.text | Filters.contact | Filters.location | Filters.venue | Filters.command | MEDIA | OTHER
+MESSAGES = Filters.text | Filters.contact | Filters.location | Filters.venue | Filters.command 
 PREVIEWS = Filters.entity("url")
 
 RESTRICTION_TYPES = {'پیام': MESSAGES,
